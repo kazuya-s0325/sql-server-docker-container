@@ -1,0 +1,18 @@
+version: '3.3'
+services:
+  db:
+    build: ./
+    environment:
+      SA_PASSWORD: "B!ng_2024"
+      ACCEPT_EULA: "Y"
+      MSSQL_AGENT_ENABLED: "true"
+    ports:
+      - "1433:1433"
+    container_name: sqlserver
+    hostname: sqlserver
+    volumes:
+      - ms-sqlserver-linux-test-data:/var/opt/mssql
+      - ./seed:/seed
+volumes:
+  ms-sqlserver-linux-test-data:
+    driver: local
